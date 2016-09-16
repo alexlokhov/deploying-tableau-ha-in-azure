@@ -54,6 +54,8 @@ When using three or more nodes, deploying an odd number of nodes in a cluster is
 
 ####Microsoft Azure Availability Sets
 To provide redundancy to Tableau Server, we recommend grouping three or more Tableau Server nodes in an availability set. This configuration ensures that during either a planned or unplanned maintenance event, at least one node will be available and meet the 99.95% Azure SLA. For more information, see the [Azure SLA for Virtual Machines](https://azure.microsoft.com/en-gb/support/legal/sla/virtual-machines/v1_0/).
+
+From the ["Manage the availability of virtual machines" article](https://azure.microsoft.com/en-gb/documentation/articles/virtual-machines-windows-manage-availability/): https://azure.microsoft.com/en-gb/documentation/articles/virtual-machines-windows-manage-availability/
 >Each virtual machine in an availability set is assigned an update domain and a fault domain by the underlying Azure platform. For a given availability set, five non-user-configurable update domains are assigned by default (resource manager deployments can then be increased to provide up to twenty update domains) to indicate groups of virtual machines and underlying physical hardware that can be rebooted at the same time. When more than five virtual machines are configured within a single availability set, the sixth virtual machine will be placed into the same update domain as the first virtual machine, the seventh in the same update domain as the second virtual machine, and so on. The order of update domains being rebooted may not proceed sequentially during planned maintenance, but only one update domain will be rebooted at a time.
 
 ![image](https://cloud.githubusercontent.com/assets/9513594/18582905/5ca90a00-7bff-11e6-923f-28487a400803.png)
