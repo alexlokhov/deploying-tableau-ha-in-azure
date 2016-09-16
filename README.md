@@ -8,7 +8,7 @@ That said, a brief summary of applicable concepts and definitions can be found b
 
 - High Availability
 
-High availability describes a system’s ability to continue processing and functioning for a certain period of time — normally a very high percentage of time, for example 99.999%.
+   High availability describes a system’s ability to continue processing and functioning for a certain period of time — normally a very high percentage of time, for example 99.999%.
 
 High availability can be implemented in your IT infrastructure by reducing any single points-of-failure (SPOF), using redundant components. Similarly, clustering and coupling applications between two or more systems can provide a highly available computing environment.
 
