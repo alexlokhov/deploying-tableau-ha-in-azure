@@ -48,7 +48,7 @@ Running of the script can be automated using Windows Task Scheduler or with the 
 
 ###Tableau HA Configuration in Azure
 ####Tableau Highly Available Configuration
-Per Tableau’s requirements, a Tableau Server must have at least three nodes in the cluster to be considered “highly available”. A three-node cluster is a great starting point for larger deployments. Should one node fail, there will still be a quorum with the remaining active two nodes.
+Per Tableau’s requirements, a Tableau Server must have at least three nodes in the cluster to be considered “highly available”. A three-node cluster is a great starting point for larger deployments. Should one node fail, there will still be a quorum with the remaining active two nodes. There is no failover support on a two-node cluster. It is not required to add a third server to the cluster, but with a two-node cluster, if one of the two nodes goes down, Tableau Server will shut down.
 
 When using three or more nodes, deploying an odd number of nodes in a cluster is a preferred topology for improved high availability. Clusters with an even node count have the same quorum ability as clusters with one fewer node. For example, clusters with both three and four nodes will shut down in the case of two simultaneous node outages due to lack of quorum. Adding an even node to a three-node cluster will spread the workload across more nodes but also reduce the risk of complete node failure by providing additional redundant processes. If you are short on hardware resources, you can opt for the three-node HA.
 
