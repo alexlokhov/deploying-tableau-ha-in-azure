@@ -10,13 +10,13 @@ That said, a brief summary of applicable concepts and definitions can be found b
 
    High availability describes a system’s ability to continue processing and functioning for a certain period of time — normally a very high percentage of time, for example 99.999%.
 
-High availability can be implemented in your IT infrastructure by reducing any single points-of-failure (SPOF), using redundant components. Similarly, clustering and coupling applications between two or more systems can provide a highly available computing environment.
+   High availability can be implemented in your IT infrastructure by reducing any single points-of-failure (SPOF), using redundant components. Similarly, clustering and coupling applications between two or more systems can provide a highly available computing environment.
 
-Tableau’s high availability features seek to mitigate failure at the worker (node) and process level.
+   Tableau’s high availability features seek to mitigate failure at the worker (node) and process level.
 
 ### Disaster Recovery
 
-Disaster Recovery focuses on business continuity after one or more major failures renders a data center or Tableau server offline. DR typically focuses on two key objectives:
+   Disaster Recovery focuses on business continuity after one or more major failures renders a data center or Tableau server offline. DR typically focuses on two key objectives:
 
 *Recovery Time Objective (RTO)* The Recovery Time Objective is the time needed to recover from a disaster or, saying it another way, how long you can afford to be without your systems.
 
