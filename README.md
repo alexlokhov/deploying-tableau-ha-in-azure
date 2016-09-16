@@ -44,7 +44,7 @@ tabadmin.exe backup $(get-date –f yyyy-MM-dd-hhmm) –d
 net use \\tableaubackup.file.core.windows.net\tableaubackup /u:tableaubackup 1T/5xEDlea1+X93yxripmX+atN1+chvweIkJ4bUl691TpI3BmMNT7y+3sS9L3PcM8Kjpt6Kmus7RsR9l46Ts9A==
 move *.tsbak \\tableaubackup.file.core.windows.net\tableaubackup
 ```
-Running of the script can be automated with native Windows OS tools or with the Azure Automation service.
+Running of the script can be automated using Windows Task Scheduler or with the Azure Automation service.
 
 ###Tableau HA Configuration in Azure
 ####Tableau Highly Available Configuration
