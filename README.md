@@ -1,5 +1,5 @@
-# Guide for deploying Tableau in HA configuration in Azure
-## Introduction
+## Guide for deploying Tableau in HA configuration in Azure
+### Introduction
 This informal document describes patterns for implementing a Disaster Recovery (DR) program for Tableau Server on the Microsoft Azure Cloud Computing platform. It also details how Tableau's existing high availability (HA) guidance can me modified and augmented by Azure's services.
 
 It is assumed the reader understands the differences and distinctions between HA and DR in relation to an enterprise application. They will not be discussed in depth here.
@@ -22,7 +22,7 @@ That said, a brief summary of applicable concepts and definitions can be found b
 
    *Recovery Point Objective (RPO)* Recovery Point Objective describes the age of the data you want the ability to restore in the event of a disaster. For example, if your RPO is six hours, you want to be able to restore systems back to the state they were in, as of no longer than six hours ago. To achieve this, you need to be making backups or other data copies at least every six hours. Any data created or modified inside your recovery point objective will be either lost or must be recreated during a recovery.
 
-##Tableau DR Configuration in Azure##
+###Tableau DR Configuration in Azure
 
 Depending on the required RPO and RTO, a single node system with a regular backup policy and a ‘cold’ stand-by Tableau Server might be sufficient.
 
@@ -36,13 +36,13 @@ Only backups made with the tabadmin backup command are supported when restoring 
 
 There is no need to stop production Tableau Server to create backups. This means that backups can be taken at frequent intervals which would reduce RPO. For example, if backups are created twice a day, up to 12 hours’ worth of data might be lost in the case the data is restored from the most recent backups (RPO = 12 hours). The recovery process is manual and it can take several hours for a server to be restored.
 
-##Tableau HA Configuration in Azure##
-###Tableau Highly Available Configuration###
+###Tableau HA Configuration in Azure
+####Tableau Highly Available Configuration
 Per Tableau’s requirements, a Tableau Server must have at least three nodes in the cluster to be considered “highly available”. A three-node cluster is a great starting point for larger deployments. Should one node fail, there will still be a quorum with the remaining active two nodes.
 
 When using three or more nodes, deploying an odd number of nodes in a cluster is a preferred topology for improved high availability. Clusters with an even node count have the same quorum ability as clusters with one fewer node. For example, clusters with both three and four nodes will shut down in the case of two simultaneous node outages due to lack of quorum. Adding an even node to a three-node cluster will spread the workload across more nodes but also reduce the risk of complete node failure by providing additional redundant processes. If you are short on hardware resources, you can opt for the three-node HA.
 
-###Microsoft Azure Availability Sets###
+####Microsoft Azure Availability Sets
 To provide redundancy to Tableau Server, we recommend grouping three or more Tableau Server nodes in an availability set. This configuration ensures that during either a planned or unplanned maintenance event, at least one node will be available and meet the 99.95% Azure SLA. For more information, see the Azure SLA for Virtual Machines. Each virtual machine in an availability set is assigned an update domain and a fault domain by the underlying Azure platform. For a given availability set, five non-user-configurable update domains are assigned by default (resource manager deployments can then be increased to provide up to twenty update domains) to indicate groups of virtual machines and underlying physical hardware that can be rebooted at the same time. When more than five virtual machines are configured within a single availability set, the sixth virtual machine will be placed into the same update domain as the first virtual machine, the seventh in the same update domain as the second virtual machine, and so on. The order of update domains being rebooted may not proceed sequentially during planned maintenance, but only one update domain will be rebooted at a time.
 
 ![image](https://cloud.githubusercontent.com/assets/9513594/18582905/5ca90a00-7bff-11e6-923f-28487a400803.png)
@@ -61,12 +61,12 @@ It is recommended to configure a Gateway process on each node. This mitigates th
 
 What happens when a Gateway process fails? As mentioned previously, if no Gateway processes are running the entire Tableau Server cluster will be unavailable. If other Gateway processes remain running, requests made to those working Gateways will be processed normally. However, any requests received by the failed Gateway will continue to fail despite the presence of other functioning Gateways. Failed Gateway processes automatically restart; so as long as the computer itself is working, the Gateway process will relaunch and resume serving requests. If your risk tolerance to individual Gateway failures is very low, then placing your Tableau Server cluster behind an external load balancer (ELB) will ensure that requests only get routed to functioning Gateway processes. Even when the server is configured for high availability, Tableau still recommends taking regular backups.
 
-##Azure Application Gateway and Azure Load Balancer##
+###Azure Application Gateway and Azure Load Balancer
 Microsoft Azure Application Gateway provides an Azure-managed HTTP load-balancing solution based on layer-7 load balancing. Application Gateway works at the application layer (level 7 in the OSI network reference stack). Azure Application Gateway can be used as a load-balancer when Tableau Server is going to be accessed from public internet as it acts as a reverse-proxy server and provides additional services such as HTTPS termination.
 
 Azure Load Balancer is a Layer 4 (TCP, UDP) load balancer that distributes incoming traffic among healthy service instances in cloud services or virtual machines defined in a load-balanced set.
 
-##Cost Considerations##
+###Cost Considerations
 
 Tableau Server operates on one of two license models: user-based and core-based.
 
@@ -76,7 +76,7 @@ With the core-based license, each server license covers one production and up to
 
 With the HA configuration a minimum of 16-core license is required to run Tableau Server (the primary node doesn’t need to be licensed if it only runs Cluster Controller and Gateway services). At least three VMs need to be deployed in Azure to support a HA configuration.
 
-##Additional Resources##
+###Additional Resources
 
 Tableau Server 9.0 High Availability: Delivering Mission-Critical Analytics in the Flow
 
