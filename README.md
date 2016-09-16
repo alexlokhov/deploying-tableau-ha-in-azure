@@ -41,7 +41,7 @@ There is no need to stop production Tableau Server to create backups. This means
 Sample powershell script for creating Tableau server backups:
 ```
 tabadmin.exe backup $(get-date –f yyyy-MM-dd-hhmm) –d
-net use \\tableaubackup.file.core.windows.net\tableaubackup /u:tableaubackup 1T/5xEDlea1+X93yxripmX+atN1+chvweIkJ4bUl691TpI3BmMNT7y+3sS9L3PcM8Kjpt6Kmus7RsR9l46Ts9A==
+net use \\tableaubackup.file.core.windows.net\tableaubackup /u:tableaubackup %password%
 move *.tsbak \\tableaubackup.file.core.windows.net\tableaubackup
 ```
 Running of the script can be automated using Windows Task Scheduler or with the Azure Automation service.
