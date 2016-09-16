@@ -80,6 +80,5 @@ With the HA configuration a minimum of 16-core license is required to run Tablea
 
 ###Additional Resources
 
-Tableau Server 9.0 High Availability: Delivering Mission-Critical Analytics in the Flow
-
-http://www.tableau.com/learn/whitepapers/high-availability-mission-critical-rapid-fire-BI
+- Tableau Server 9.0 High Availability: Delivering Mission-Critical Analytics in the Flow
+   http://www.tableau.com/learn/whitepapers/high-availability-mission-critical-rapid-fire-BI
