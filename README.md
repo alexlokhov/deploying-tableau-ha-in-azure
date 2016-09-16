@@ -51,7 +51,7 @@ To provide redundancy to Tableau Server, we recommend grouping three or more Tab
 
 Microsoft recommends configuring separate availability sets for each application tier. Tableau Server is a single-tier application and there is no need to segregate it into multiple Availability Sets. We would recommend not to add any other applications to the same Availability Set
 
-->![image](https://cloud.githubusercontent.com/assets/9513594/18583016/17971b9a-7c00-11e6-8c5d-c235590db344.png)<-
+![image](https://cloud.githubusercontent.com/assets/9513594/18583016/17971b9a-7c00-11e6-8c5d-c235590db344.png)
 
 *A three node HA cluster configuration*
 
