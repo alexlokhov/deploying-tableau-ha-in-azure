@@ -32,7 +32,9 @@ Only backups made with the tabadmin backup command are supported when restoring 
 
 ![image](https://cloud.githubusercontent.com/assets/9513594/18582965/ce61ec02-7bff-11e6-83e6-7c0ac49c9620.png)
 
-Tableau Server backup architecture – the stand-by server is manually restored from backup in a failover scenario. This is a non-HA configuration. There is no need to stop production Tableau Server to create backups. This means that backups can be taken at frequent intervals which would reduce RPO. For example, if backups are created twice a day, up to 12 hours’ worth of data might be lost in the case the data is restored from the most recent backups (RPO = 12 hours). The recovery process is manual and it can take several hours for a server to be restored.
+*Tableau Server backup architecture – the stand-by server is manually restored from backup in a failover scenario. This is a non-HA configuration.*
+
+There is no need to stop production Tableau Server to create backups. This means that backups can be taken at frequent intervals which would reduce RPO. For example, if backups are created twice a day, up to 12 hours’ worth of data might be lost in the case the data is restored from the most recent backups (RPO = 12 hours). The recovery process is manual and it can take several hours for a server to be restored.
 
 ##Tableau HA Configuration in Azure##
 ###Tableau Highly Available Configuration###
