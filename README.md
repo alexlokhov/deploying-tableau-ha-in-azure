@@ -6,7 +6,7 @@ It is assumed the reader understands the differences and distinctions between HA
 
 That said, a brief summary of applicable concepts and definitions can be found below:
 
-### High Availability
+- High Availability
 
 High availability describes a system’s ability to continue processing and functioning for a certain period of time — normally a very high percentage of time, for example 99.999%.
 
