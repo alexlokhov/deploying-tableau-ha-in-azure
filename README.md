@@ -2,7 +2,7 @@
 ### Introduction
 This informal document describes patterns for implementing a Disaster Recovery (DR) program for Tableau Server on the Microsoft Azure Cloud Computing platform. It also details how Tableau's existing [high availability (HA) guidance](https://onlinehelp.tableau.com/v10.0/server/en-us/help.htm#distrib_ha_intro.htm) can be modified and augmented by Azure's services.
 
-It is assumed the reader understands the differences and distinctions between HA and DR in relation to an enterprise application. They will not be discussed in depth here.
+Although the terms high availability and disaster recovery are often used interchangeably, they are two distinct concepts. It is assumed the reader understands the differences and distinctions between HA and DR in relation to an enterprise application. They will not be discussed in depth here.
 
 That said, a brief summary of applicable concepts and definitions can be found below:
 
@@ -13,6 +13,8 @@ That said, a brief summary of applicable concepts and definitions can be found b
    High availability can be implemented in your IT infrastructure by reducing any single points-of-failure (SPOF), using redundant components. Similarly, clustering and coupling applications between two or more systems can provide a highly available computing environment.
 
    Tableau’s high availability features seek to mitigate failure at the worker (node) and process level.
+   
+   High Availability comes at a cost and it is important to understand if Tableau Server should be considered a mission-critical application before making HA a mandatory requirement.
 
 - Disaster Recovery
 
