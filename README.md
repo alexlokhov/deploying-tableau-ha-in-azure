@@ -38,6 +38,14 @@ Only backups made with the tabadmin backup command are supported when restoring 
 
 There is no need to stop production Tableau Server to create backups. This means that backups can be taken at frequent intervals which would reduce RPO. For example, if backups are created twice a day, up to 12 hours’ worth of data might be lost in the case the data is restored from the most recent backups (RPO = 12 hours). The recovery process is manual and it can take several hours for a server to be restored.
 
+Sample powershell script for creating Tableau server backups:
+```
+tabadmin.exe backup $(get-date –f yyyy-MM-dd-hhmm) –d
+net use \\tableaubackup.file.core.windows.net\tableaubackup /u:tableaubackup 1T/5xEDlea1+X93yxripmX+atN1+chvweIkJ4bUl691TpI3BmMNT7y+3sS9L3PcM8Kjpt6Kmus7RsR9l46Ts9A==
+move *.tsbak \\tableaubackup.file.core.windows.net\tableaubackup
+```
+Running of the script can be automated with native Windows OS tools or with the Azure Automation service.
+
 ###Tableau HA Configuration in Azure
 ####Tableau Highly Available Configuration
 Per Tableau’s requirements, a Tableau Server must have at least three nodes in the cluster to be considered “highly available”. A three-node cluster is a great starting point for larger deployments. Should one node fail, there will still be a quorum with the remaining active two nodes.
